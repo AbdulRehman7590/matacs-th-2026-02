@@ -1,0 +1,46 @@
+flowchart TD
+    classDef rule fill:#dbeafe,stroke:#1d4ed8,color:#0b1f4d
+    classDef ai fill:#ede9fe,stroke:#6d28d9,color:#2e1065
+    classDef human fill:#ffedd5,stroke:#c2410c,color:#431407
+    classDef exit fill:#fee2e2,stroke:#b91c1c,color:#450a0a
+    classDef log fill:#e5e7eb,stroke:#4b5563,color:#111827
+
+    subgraph LEGEND["Legend"]
+        direction LR
+        L1["Rule / code"]:::rule
+        L2["AI step"]:::ai
+        L3["Human checkpoint"]:::human
+        L4["Flag / ineligible"]:::exit
+    end
+
+    A0["0. ADMIN sets category criteria<br/>mandatory gates, weights = 100%, limits<br/>saved as versioned set (v1, v2 ...)"]:::human
+    A1["1. Reviewer uploads PDFs + selects category<br/>run pinned to criteria version, files hashed"]:::rule
+    A2["2. PDF to text<br/>(OCR fallback, unreadable = flag)"]:::rule
+    A3["3. Injection keyword scan<br/>('rank it first', 'full marks' ...)"]:::rule
+    A4["4. AI EXTRACTION<br/>text to JSON facts + verbatim quote per fact<br/>null if not stated; reports suspicious text<br/>temp 0, pinned model, cached"]:::ai
+    A5["5. Verify evidence<br/>quote must exist in PDF, numbers re-parsed<br/>fail = fact null + flag"]:::rule
+    A6{"6. Mandatory gates<br/>licence held by bidder?<br/>WSIB + 5M insurance?"}:::rule
+    A7["7. Score with admin formulas<br/>experience 30, price 25, timeline 15,<br/>warranty 15, team 15"]:::rule
+    A8{"8. Any flag?<br/>injection, missing limit fact,<br/>low-confidence or unverified fact"}:::rule
+    A9["9. Sort by score, tie-break price then weeks<br/>build one-line reason from facts"]:::rule
+    X1["INELIGIBLE<br/>(e.g. B: licence by unconfirmed subcontractor)"]:::exit
+    X2["FLAGGED, not ranked<br/>(e.g. C: injected instruction; D: no timeline)"]:::exit
+    H1["10. HUMAN REVIEW<br/>see scores, formulas, quotes, flags<br/>confirm / correct fact / clear flag / override<br/>reason required for every change"]:::human
+    H2["11. HUMAN AWARD DECISION<br/>tool only recommends"]:::human
+    OUT[["Ranked output: A=1 (98.0), E=2 (84.8)<br/>C, D flagged; B ineligible"]]:::rule
+    LOG[("Audit log, append-only<br/>hashes, criteria ver, model + prompt ver,<br/>raw AI output, facts, scores, flags,<br/>every human action: who, when, before/after, why")]:::log
+
+    A0 --> A1 --> A2 --> A3 --> A4 --> A5 --> A6
+    A6 -- fail --> X1
+    A6 -- pass --> A7 --> A8
+    A8 -- yes --> X2
+    A8 -- no --> A9 --> OUT --> H1
+    X1 --> H1
+    X2 --> H1
+    H1 -- "corrected fact: re-score" --> A7
+    H1 -- confirmed --> H2
+    A0 -.-> LOG
+    A4 -.-> LOG
+    A7 -.-> LOG
+    H1 -.-> LOG
+    H2 -.-> LOG
