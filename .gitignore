@@ -1,0 +1,10 @@
+# Secrets and local environment
+.env
+.venv/
+__pycache__/
+
+# Local-only material (brief must not be redistributed; sample text must not be committed)
+*.pdf
+PLAN.md
+prototype/samples/
+prototype/out/
