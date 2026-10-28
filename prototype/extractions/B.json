@@ -1,0 +1,109 @@
+{
+  "bidder_name": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": "omitted from repo; proposals are referred to by letter"
+  },
+  "licence": {
+    "stated": {
+      "value": false,
+      "evidence_quote": null,
+      "confidence": "high",
+      "notes": "No licence of the bidder is stated; only an unnamed subcontractor is described as licensed"
+    },
+    "held_by_bidder": {
+      "value": false,
+      "evidence_quote": null,
+      "confidence": "high",
+      "notes": null
+    },
+    "licence_number": {
+      "value": null,
+      "evidence_quote": null,
+      "confidence": null,
+      "notes": "omitted from repo"
+    }
+  },
+  "wsib_clearance": {
+    "value": true,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "liability_insurance_cad": {
+    "value": 5000000,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "experience": {
+    "qualifying_installs_count": {
+      "value": 6,
+      "evidence_quote": null,
+      "confidence": "high",
+      "notes": null
+    },
+    "period_start_year": {
+      "value": 2022,
+      "evidence_quote": null,
+      "confidence": "high",
+      "notes": null
+    }
+  },
+  "price_cad": {
+    "value": 189500,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "completion_weeks": {
+    "value": 10,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "panel_warranty_years": {
+    "value": 25,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "workmanship_warranty_years": {
+    "value": 5,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "named_project_lead": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": "Only a coordinator 'assigned at kickoff'; no named lead"
+  },
+  "crew_size": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": null
+  },
+  "safety_plan": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": null
+  },
+  "performance_monitoring": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": null
+  },
+  "subcontracting": {
+    "value": "Electrical work by a licensed subcontractor to be confirmed after award",
+    "evidence_quote": null,
+    "confidence": "low",
+    "notes": null
+  },
+  "suspicious_content": []
+}

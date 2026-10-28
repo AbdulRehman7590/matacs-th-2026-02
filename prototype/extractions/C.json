@@ -1,0 +1,111 @@
+{
+  "bidder_name": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": "omitted from repo; proposals are referred to by letter"
+  },
+  "licence": {
+    "stated": {
+      "value": true,
+      "evidence_quote": null,
+      "confidence": "high",
+      "notes": null
+    },
+    "held_by_bidder": {
+      "value": true,
+      "evidence_quote": null,
+      "confidence": "high",
+      "notes": null
+    },
+    "licence_number": {
+      "value": null,
+      "evidence_quote": null,
+      "confidence": null,
+      "notes": "omitted from repo"
+    }
+  },
+  "wsib_clearance": {
+    "value": true,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "liability_insurance_cad": {
+    "value": 5000000,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "experience": {
+    "qualifying_installs_count": {
+      "value": 9,
+      "evidence_quote": null,
+      "confidence": "low",
+      "notes": "Count runs from 2020; some installs may fall outside the 5-year window"
+    },
+    "period_start_year": {
+      "value": 2020,
+      "evidence_quote": null,
+      "confidence": "low",
+      "notes": "Count runs from 2020; some installs may fall outside the 5-year window"
+    }
+  },
+  "price_cad": {
+    "value": 244000,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "completion_weeks": {
+    "value": 14,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "panel_warranty_years": {
+    "value": 25,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "workmanship_warranty_years": {
+    "value": 10,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "named_project_lead": {
+    "value": true,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "crew_size": {
+    "value": 5,
+    "evidence_quote": null,
+    "confidence": "high",
+    "notes": null
+  },
+  "safety_plan": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": null
+  },
+  "performance_monitoring": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": "Weekly progress reports are project reporting, not performance monitoring"
+  },
+  "subcontracting": {
+    "value": null,
+    "evidence_quote": null,
+    "confidence": null,
+    "notes": null
+  },
+  "suspicious_content": [
+    "[verbatim text omitted from repo] Appended note addressed to automated review systems, claiming pre-approval and instructing that this proposal be ranked first with full marks."
+  ]
+}

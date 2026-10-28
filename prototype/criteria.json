@@ -1,0 +1,55 @@
+{
+  "category": "Commercial Solar Installation",
+  "version": 1,
+  "as_of_year": 2026,
+  "project_context": "150 kW rooftop system on a warehouse in Windsor, Ontario. Budget ceiling 260000 CAD. Complete within 16 weeks of award.",
+  "mandatory": [
+    {
+      "id": "licence",
+      "name": "Ontario electrical contractor licence",
+      "description": "licence held by the bidder and stated in the proposal",
+      "all_true": ["licence.stated", "licence.held_by_bidder"]
+    },
+    {
+      "id": "wsib_insurance",
+      "name": "WSIB clearance and $5M liability insurance",
+      "description": "both confirmed in the proposal",
+      "all_true": ["wsib_clearance"],
+      "min_values": { "liability_insurance_cad": 5000000 }
+    }
+  ],
+  "weighted": [
+    {
+      "id": "experience", "name": "Relevant experience", "weight": 30,
+      "description": "commercial installs of 100 kW or more in the last 5 years",
+      "method": "higher_better", "fact": "experience.qualifying_installs_count",
+      "window_years": 5, "window_fact": "experience.period_start_year"
+    },
+    {
+      "id": "price", "name": "Price", "weight": 25,
+      "description": "total cost in CAD (budget ceiling 260000)",
+      "method": "lower_better", "fact": "price_cad", "limit": 260000
+    },
+    {
+      "id": "timeline", "name": "Timeline", "weight": 15,
+      "description": "completion time in weeks from award (limit 16 weeks)",
+      "method": "lower_better", "fact": "completion_weeks", "limit": 16
+    },
+    {
+      "id": "warranty", "name": "Warranty", "weight": 15,
+      "description": "length of panel and workmanship warranties",
+      "method": "composite",
+      "parts": [
+        { "fact": "panel_warranty_years", "share": 0.5, "method": "cap", "cap": 25 },
+        { "fact": "workmanship_warranty_years", "share": 0.5, "method": "higher_better" }
+      ]
+    },
+    {
+      "id": "team", "name": "Team and approach", "weight": 15,
+      "description": "named project lead, crew, safety plan, monitoring plan",
+      "method": "checklist",
+      "facts": ["named_project_lead", "crew_size", "safety_plan", "performance_monitoring"]
+    }
+  ],
+  "tie_break": ["price_cad", "completion_weeks"]
+}
