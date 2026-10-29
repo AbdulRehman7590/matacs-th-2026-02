@@ -96,7 +96,16 @@ def iter_facts(node, prefix=""):
             yield from iter_facts(val, prefix + key + ".")
 
 
-def verify_evidence(facts, text, flags):
+def is_relative_year(n, quote, as_of_year):
+    """'in the last five years' supports a start year of as_of_year - 5."""
+    m = re.search(r"\b(?:last|past) (\w+) years\b", quote)
+    if not m:
+        return False
+    span = NUMBER_WORDS.get(m.group(1), int(m.group(1)) if m.group(1).isdigit() else None)
+    return span is not None and n == as_of_year - span
+
+
+def verify_evidence(facts, text, flags, as_of_year):
     """Null out any fact whose quote is not verbatim in the source, or whose number is not in its quote."""
     norm = lambda s: re.sub(r"\s+", " ", s).strip().lower()
     source = norm(text)
@@ -113,7 +122,8 @@ def verify_evidence(facts, text, flags):
             n = int(v) if float(v).is_integer() else v
             words = [w for w, i in NUMBER_WORDS.items() if i == n]
             if str(n) not in q and not any(re.search(rf"\b{w}\b", q) for w in words) \
-                    and not (n % 1_000_000 == 0 and f"{n // 1_000_000}m" in q):
+                    and not (n % 1_000_000 == 0 and f"{n // 1_000_000}m" in q) \
+                    and not is_relative_year(n, q, as_of_year):
                 flags.append(f"{path}: number {n} not found in its quote")
 
 
@@ -259,7 +269,7 @@ def main():
                 flags.append("extraction returned invalid JSON twice; manual entry needed")
         if text is not None:
             if not args.offline:
-                verify_evidence(facts, text, flags)
+                verify_evidence(facts, text, flags, criteria["as_of_year"])
             flags += [f"injection keyword scan matched '{p}'" for p in scan_injection(text)]
         gates = check_gates(facts, criteria)
         collect_flags(facts, criteria, gates, flags)
